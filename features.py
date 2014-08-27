@@ -100,7 +100,7 @@ class Aligned_Feature(Giraffe_Feature_Base):
                evalue, identities):
 
     super(Aligned_Feature, self).__init__(accession, name, query_start, query_end,
-                                          subject_start, subject_end, type, 'Detected Feature')
+                                          subject_start, subject_end, type, 'Detected Features')
     self.alignment_query = alignment_query
     self.alignment_match = alignment_match
     self.alignment_subject = alignment_subject
