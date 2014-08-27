@@ -2,7 +2,7 @@
 
 from setuptools import setup
 
-setup(name='giraffe-features',
+setup(name='giraffe_features',
       version='3.0',
       description='Giraffe compatible biological feature description',
       author='Benjie Chen',
