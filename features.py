@@ -62,7 +62,29 @@ class Feature_Type_Choices(Constant_Choices):
 
 class Giraffe_Feature_Base(object):
   """
-  Describes a feature on a sequence.
+  Describes what part of a feature or subject matches to what part of a query
+  sequence.
+
+  Note that for coordinates, this class includes query_start and query_end, and
+  subject_start and subject_end. All four values are 1-indexed bp positions on
+  the forward strand. Therefore, if subject_start < subject_end, then the
+  subject matches to the query, otherwise it matches to the reverse complement
+  of the query.
+
+  query_start and query_end always refers to bps on the forward strand of the
+  query. If the query is circular, then query_start may be > query_end.
+
+  It is more complicated when the query is linear, but the subject is circular,
+  such as blasting a query against a circular genome. In this case,
+  subject_start may be greater than subject_end across the circular boundary of
+  the genome.
+
+  To avoid confusion, software that wants to use this class to describe linear
+  query matching to circular subject should stick to the convention that
+  subject_start > subject_end implies matching subject to reverse complement of
+  the query or matching reverse complement of subject to query. When presenting
+  a match across the circular boundary of the subject, just use bp values
+  greater than the circular length of the subject.
   """
 
   def __init__(self, label, name, query_start, query_end,
